@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export IMAGE="%IMAGE%"
+export TAG="%TAG%"
+export REGISTRY_USER="%REGISTRY_USER%"
+export REGISTRY_PASS="%REGISTRY_PASS%"
+export REGISTRY="%REGISTRY%"
+
+docker login -u $REGISTRY_USER -p $REGISTRY_PASS $REGISTRY
+docker rm -fv $IMAGE
+cd ~/QA_projects/$IMAGE && docker-compose up -d
